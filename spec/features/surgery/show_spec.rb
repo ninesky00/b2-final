@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "Surgery" do 
   before :each do 
     @surgery = FactoryBot.create(:surgery, day: :tuesday)
-    @other_surgeries = FactoryBot.create_list(:surgery, 3, day: :tuesday)
-    @not_on_same_day = FactoryBot.create_list(:surgery, 3, day: :friday)
+    @other_surgeries = FactoryBot.create_list(:surgery, 2, day: :tuesday)
+    @not_on_same_day = FactoryBot.create_list(:surgery, 2, day: :friday)
   end
   describe "show page" do 
     it "has a link from the surgery index page" do 
@@ -33,6 +33,18 @@ RSpec.describe "Surgery" do
           expect(page).to_not have_content(surgery.title)
         end
       end
+    end
+
+    it "displays a field to add a doctor to this surgery" do 
+      doctor = FactoryBot.create(:doctor)
+      visit surgery_path(@surgery)
+      
+
+      expect(page).to have_button("Add A Doctor To This Surgery")
+      fill "doctor", with: doctor.name
+      click_on "submit"
+      expect(current_path).to eq(surgery_path(@surgery))
+      expect(page).to have_content(doctor.name)
     end
   end
 end
