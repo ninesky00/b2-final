@@ -2,7 +2,7 @@
 <ul>
   <% @surgeries.each do |surgery| %>
     <li id="surgery-<%= surgery.id %>">
-    surgery title: <%= surgery.title %>
+    surgery title: <%= link_to "#{surgery.title}", surgery_path(surgery.id) %>
     doctors: <%= surgery.doctor_names %>
     </li>
   <% end %>
