@@ -1,0 +1,9 @@
+<h1>Surgery Index</h1>
+<ul>
+  <% @surgeries.each do |surgery| %>
+    <li id="surgery-<%= surgery.id %>">
+    surgery title: <%= surgery.title %>
+    doctors: <%= surgery.doctor_names %>
+    </li>
+  <% end %>
+</ul>
