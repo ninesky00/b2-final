@@ -40,9 +40,9 @@ RSpec.describe "Surgery" do
       visit surgery_path(@surgery)
       
 
-      expect(page).to have_button("Add A Doctor To This Surgery")
-      fill "doctor", with: doctor.name
-      click_on "submit"
+      expect(page).to have_content("Add A Doctor To This Surgery")
+      fill_in "doctor", with: doctor.name
+      click_on "Save"
       expect(current_path).to eq(surgery_path(@surgery))
       expect(page).to have_content(doctor.name)
     end

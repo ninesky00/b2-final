@@ -1,10 +1,18 @@
 <h1>Surgery Show Page</h1>
+<section id="add-doctor">"Add A Doctor To This Surgery"
+ <%= form_with url: surgery_surgery_doctors_path(params[:id]), method: :post do |f| %>
+    <%= f.text_area :doctor %>
+    <%= f.label :doctor %>
+    <%= f.submit %>
+  <% end %>
+</section>
 
 <section id="surgery-information">
   <ul>
     <li><%= @surgery.title %></li>
     <li><%= @surgery.day %></li>
     <li><%= @surgery.room_number %></li>
+    <li><%= @surgery.doctor_names %></li>
   </ul>
 </section>
 
