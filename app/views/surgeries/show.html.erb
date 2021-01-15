@@ -1,9 +1,13 @@
 <h1>Surgery Show Page</h1>
 
 <section id="surgery-information">
-<ul>
-  <li><%= @surgery.title %></li>
-  <li><%= @surgery.day %></li>
-  <li><%= @surgery.room_number %></li>
-</ul>
+  <ul>
+    <li><%= @surgery.title %></li>
+    <li><%= @surgery.day %></li>
+    <li><%= @surgery.room_number %></li>
+  </ul>
 </section>
+
+<section id="other-surgeries">Other surgeries happening this day of the week:
+  <%= Surgery.surgeries_on_same_day(@surgery.day) %>
+</section >
